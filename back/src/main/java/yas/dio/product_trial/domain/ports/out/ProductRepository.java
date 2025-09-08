@@ -10,7 +10,7 @@ public interface ProductRepository {
 
     Optional<Product> findById(Long id);
 
-    void create(Product product);
+    Product create(Product product);
 
     void update(Product product);
 
