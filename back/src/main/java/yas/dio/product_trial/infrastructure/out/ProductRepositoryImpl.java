@@ -3,13 +3,12 @@ package yas.dio.product_trial.infrastructure.out;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import yas.dio.product_trial.domain.model.Product;
 import yas.dio.product_trial.application.ports.out.ProductRepository;
+import yas.dio.product_trial.domain.model.Product;
 import yas.dio.product_trial.infrastructure.out.jpa.ProductJpaRepository;
 import yas.dio.product_trial.infrastructure.out.jpa.mappers.ProductEntityMapper;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +22,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     @Transactional(readOnly = true)
     public List<Product> findAll() {
-        return new ArrayList<>();
+        return jpaRepository.findAll().stream().map(mapper::toModel).toList();
     }
 
     @Override

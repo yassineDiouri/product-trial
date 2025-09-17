@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import yas.dio.product_trial.application.ports.in.CreateProductCommand;
+import yas.dio.product_trial.application.ports.in.GetAllProductsCommand;
 import yas.dio.product_trial.application.ports.in.GetProductByIdCommand;
 import yas.dio.product_trial.application.ports.in.UpdateProductCommand;
 import yas.dio.product_trial.infrastructure.in.dto.requests.CreateProductRequest;
@@ -19,6 +20,8 @@ import yas.dio.product_trial.infrastructure.in.dto.requests.UpdateProductRequest
 import yas.dio.product_trial.infrastructure.in.dto.responses.ProductResponse;
 import yas.dio.product_trial.infrastructure.in.exceptions.ProductValidationException;
 import yas.dio.product_trial.infrastructure.in.mappers.ProductMapper;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -28,9 +31,15 @@ public class ProductController {
     private final GetProductByIdCommand getProductByIdCommand;
     private final CreateProductCommand createProductCommand;
     private final UpdateProductCommand updateProductCommand;
+    private final GetAllProductsCommand getAllProductsCommand;
     private final ProductMapper productMapper;
 
-    @GetMapping(path = "{id}")
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ProductResponse> getAll() {
+        return getAllProductsCommand.getAll().stream().map(productMapper::toResponse).toList();
+    }
+
+    @GetMapping(path = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ProductResponse getById(@PathVariable Long id) {
         return productMapper.toResponse(getProductByIdCommand.getById(id));
     }
