@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import yas.dio.product_trial.application.ports.in.CreateProductCommand;
 import yas.dio.product_trial.domain.model.InventoryStatus;
 import yas.dio.product_trial.domain.model.Product;
 import yas.dio.product_trial.infrastructure.out.jpa.ProductJpaRepository;

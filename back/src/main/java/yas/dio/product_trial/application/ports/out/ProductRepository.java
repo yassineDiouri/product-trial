@@ -1,4 +1,4 @@
-package yas.dio.product_trial.domain.ports.out;
+package yas.dio.product_trial.application.ports.out;
 
 import yas.dio.product_trial.domain.model.Product;
 

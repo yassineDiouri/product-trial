@@ -12,6 +12,7 @@ public class ProductEntityMapper implements EntityMapper<Product, ProductEntity>
         return Product.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
+                .name(entity.getName())
                 .description(entity.getDescription())
                 .image(entity.getImage())
                 .category(entity.getCategory())
@@ -38,7 +39,7 @@ public class ProductEntityMapper implements EntityMapper<Product, ProductEntity>
         entity.setQuantity(model.getQuantity());
         entity.setInternalReference(model.getInternalReference());
         entity.setShellId(model.getShellId());
-        entity.setInventoryStatus(model.getInventoryStatus().name());
+        entity.setInventoryStatus(model.getInventoryStatus() == null ? null : model.getInventoryStatus().name());
         entity.setRating(model.getRating());
         entity.setCreatedAt(model.getCreatedAt());
         entity.setUpdatedAt(model.getUpdatedAt());

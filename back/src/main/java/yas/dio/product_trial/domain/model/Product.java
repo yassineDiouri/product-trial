@@ -24,6 +24,6 @@ public class Product {
     private Long shellId;
     private InventoryStatus inventoryStatus;
     private Double rating;
-    @Builder.Default private LocalDateTime createdAt = LocalDateTime.now();
-    @Builder.Default private LocalDateTime updatedAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
