@@ -1,4 +1,4 @@
-package yas.dio.product_trial.domain.ports.in;
+package yas.dio.product_trial.application.ports.in;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import yas.dio.product_trial.application.ports.in.DeleteProductByIdCommand;
 import yas.dio.product_trial.application.ports.out.ProductRepository;
 import yas.dio.product_trial.domain.model.InventoryStatus;
 import yas.dio.product_trial.domain.model.Product;

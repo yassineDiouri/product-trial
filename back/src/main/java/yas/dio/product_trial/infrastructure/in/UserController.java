@@ -1,0 +1,28 @@
+package yas.dio.product_trial.infrastructure.in;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import yas.dio.product_trial.application.ports.in.CreateUserCommand;
+import yas.dio.product_trial.infrastructure.in.dto.requests.CreateUserRequest;
+import yas.dio.product_trial.infrastructure.in.exceptions.UserValidationException;
+
+@RestController
+@RequestMapping("/")
+@RequiredArgsConstructor
+public class UserController {
+
+    private final CreateUserCommand createUserCommand;
+
+    @PostMapping("account")
+    public void createUser(@RequestBody @Validated CreateUserRequest createUserRequest, Errors errors) {
+        if (errors.hasErrors()) {
+            throw new UserValidationException(errors);
+        }
+        createUserCommand.createUser(createUserRequest.toModel());
+    }
+}

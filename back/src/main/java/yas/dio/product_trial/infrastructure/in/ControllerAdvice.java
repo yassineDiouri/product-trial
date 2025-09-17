@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import yas.dio.product_trial.domain.exception.ProductNotFoundException;
 import yas.dio.product_trial.infrastructure.in.exceptions.ProductValidationException;
+import yas.dio.product_trial.infrastructure.in.exceptions.UserValidationException;
 
 @RestControllerAdvice
 public class ControllerAdvice {
@@ -20,5 +21,10 @@ public class ControllerAdvice {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body("Product not found for id %d".formatted(ex.getId()));
+    }
+
+    @ExceptionHandler(UserValidationException.class)
+    public ResponseEntity<?> handleUserValidationException(UserValidationException ex) {
+        return new ResponseEntity<>(ex.getErrors(), HttpStatus.BAD_REQUEST);
     }
 }
