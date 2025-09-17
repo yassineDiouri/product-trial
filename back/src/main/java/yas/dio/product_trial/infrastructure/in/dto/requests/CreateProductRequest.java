@@ -1,4 +1,4 @@
-package yas.dio.product_trial.infrastructure.in.dto.request;
+package yas.dio.product_trial.infrastructure.in.dto.requests;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

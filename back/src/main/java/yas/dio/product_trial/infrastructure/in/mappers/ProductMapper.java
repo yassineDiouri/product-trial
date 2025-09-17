@@ -2,11 +2,12 @@ package yas.dio.product_trial.infrastructure.in.mappers;
 
 import org.springframework.stereotype.Component;
 import yas.dio.product_trial.domain.model.Product;
-import yas.dio.product_trial.infrastructure.in.dto.request.CreateProductRequest;
-import yas.dio.product_trial.infrastructure.in.dto.request.UpdateProductRequest;
+import yas.dio.product_trial.infrastructure.in.dto.requests.CreateProductRequest;
+import yas.dio.product_trial.infrastructure.in.dto.requests.UpdateProductRequest;
+import yas.dio.product_trial.infrastructure.in.dto.responses.ProductResponse;
 
 @Component
-public class ProductRequestMapper {
+public class ProductMapper {
 
     public Product toModel(CreateProductRequest request) {
         return Product.builder()
@@ -39,5 +40,24 @@ public class ProductRequestMapper {
                 .inventoryStatus(request.inventoryStatus())
                 .rating(request.rating())
                 .build();
+    }
+
+    public ProductResponse toResponse(Product model) {
+        return new ProductResponse(
+                model.getId(),
+                model.getCode(),
+                model.getName(),
+                model.getDescription(),
+                model.getImage(),
+                model.getCategory(),
+                model.getPrice(),
+                model.getQuantity(),
+                model.getInternalReference(),
+                model.getShellId(),
+                model.getInventoryStatus(),
+                model.getRating(),
+                model.getCreatedAt(),
+                model.getUpdatedAt()
+        );
     }
 }
