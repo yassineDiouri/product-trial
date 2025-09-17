@@ -62,6 +62,8 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     @Transactional
     public void deleteById(Long id) {
-
+        if (id != null) {
+            jpaRepository.deleteById(id);
+        }
     }
 }

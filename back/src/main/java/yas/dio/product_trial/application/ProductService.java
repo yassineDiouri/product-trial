@@ -4,13 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import yas.dio.product_trial.application.ports.in.CreateProductCommand;
+import yas.dio.product_trial.application.ports.in.DeleteProductByIdCommand;
 import yas.dio.product_trial.application.ports.in.UpdateProductCommand;
 import yas.dio.product_trial.application.ports.out.ProductRepository;
 import yas.dio.product_trial.domain.model.Product;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService implements CreateProductCommand, UpdateProductCommand {
+public class ProductService implements CreateProductCommand, UpdateProductCommand, DeleteProductByIdCommand {
 
     private final ProductRepository productRepository;
 
@@ -23,5 +24,10 @@ public class ProductService implements CreateProductCommand, UpdateProductComman
     @Override
     public void update(Product product) {
         productRepository.update(product);
+    }
+
+    @Override
+    public void delete(Long id) {
+        productRepository.deleteById(id);
     }
 }

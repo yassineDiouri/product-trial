@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import yas.dio.product_trial.application.ports.in.CreateProductCommand;
+import yas.dio.product_trial.application.ports.in.DeleteProductByIdCommand;
 import yas.dio.product_trial.application.ports.in.GetAllProductsCommand;
 import yas.dio.product_trial.application.ports.in.GetProductByIdCommand;
 import yas.dio.product_trial.application.ports.in.UpdateProductCommand;
@@ -32,6 +34,7 @@ public class ProductController {
     private final CreateProductCommand createProductCommand;
     private final UpdateProductCommand updateProductCommand;
     private final GetAllProductsCommand getAllProductsCommand;
+    private final DeleteProductByIdCommand deleteProductByIdCommand;
     private final ProductMapper productMapper;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -60,5 +63,10 @@ public class ProductController {
             throw new ProductValidationException(errors);
         }
         updateProductCommand.update(productMapper.toModel(updateProductRequest));
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void update(@PathVariable Long id) {
+        deleteProductByIdCommand.delete(id);
     }
 }
