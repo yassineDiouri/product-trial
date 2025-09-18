@@ -8,12 +8,21 @@ import yas.dio.product_trial.domain.model.User;
 import yas.dio.product_trial.infrastructure.out.jpa.UserJpaRepository;
 import yas.dio.product_trial.infrastructure.out.jpa.mappers.UserEntityMapper;
 
+import java.util.Optional;
+
 @Repository
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 
     private final UserJpaRepository userJpaRepository;
     private final UserEntityMapper userEntityMapper;
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<User> findByEmail(String email) {
+        return userJpaRepository.findByEmail(email)
+                .map(userEntityMapper::toModel);
+    }
 
     @Override
     @Transactional
