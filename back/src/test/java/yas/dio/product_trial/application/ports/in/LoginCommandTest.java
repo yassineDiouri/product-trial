@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import yas.dio.product_trial.application.ports.out.TokenProvider;
 import yas.dio.product_trial.domain.exception.LoginFailureException;
-import yas.dio.product_trial.infrastructure.out.jpa.UserJpaRepository;
-import yas.dio.product_trial.infrastructure.out.jpa.entities.UserEntity;
+import yas.dio.product_trial.infrastructure.adapters.out.jpa.UserJpaRepository;
+import yas.dio.product_trial.infrastructure.adapters.out.jpa.entities.UserEntity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

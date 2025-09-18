@@ -4,4 +4,6 @@ import java.util.Map;
 
 public interface TokenProvider {
     String generateToken(String subject, Map<String, Object> claims);
+
+    String getSubject(String token);
 }

@@ -7,7 +7,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import yas.dio.product_trial.domain.model.User;
-import yas.dio.product_trial.infrastructure.out.jpa.UserJpaRepository;
+import yas.dio.product_trial.infrastructure.adapters.out.jpa.UserJpaRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import yas.dio.product_trial.domain.model.InventoryStatus;
 import yas.dio.product_trial.domain.model.Product;
-import yas.dio.product_trial.infrastructure.out.jpa.ProductJpaRepository;
+import yas.dio.product_trial.infrastructure.adapters.out.jpa.ProductJpaRepository;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;

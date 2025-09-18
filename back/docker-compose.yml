@@ -23,7 +23,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/product_trial
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: user
-      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
     ports:
       - "8080:8080"
     depends_on:
